@@ -8,15 +8,16 @@ namespace AddressBookSystem
         {
             bool flag = true;
             while (flag)
-            {
-                Console.WriteLine("Welcome to Address Book Program\n");
-                Console.WriteLine("Choose an Option Execute Program\n 1.CreateContact\n 2.Exit\n ");
+            {                
+                Console.WriteLine("\nWelcome to Address Book Program!!!");
+                Console.WriteLine("Choose an Option Execute Program\n 1.CreateContact\n 2.AddContact\n 3.Exit\n ");
                 int option = Convert.ToInt32(Console.ReadLine());
+                Contact contact = new Contact();
                 switch (option)
                 {
                     case 1:
                         Console.WriteLine("Enter The Details as Firstname,Lastname,Address,City,State,Zip,PhoneNumber,Email\n");
-                        Contact contact = new Contact()
+                        Contact create = new Contact()
                         {
                             FirstName = Console.ReadLine(),
                             LastName = Console.ReadLine(),
@@ -29,6 +30,13 @@ namespace AddressBookSystem
                         };
                         break;
                     case 2:
+                        Console.WriteLine("Enter The Details in Order of Firstname,Lastname,Address,City,State,Zip,PhoneNumber,Email... To add contact..\n");
+                        AddressBook addressBook = new AddressBook();
+                        Contact addcontact = new Contact();
+                        addressBook.Addcontact(contact);
+                        addressBook.Display();
+                        break;
+                    case 3:
                         flag = false;
                         break;
                     default:
