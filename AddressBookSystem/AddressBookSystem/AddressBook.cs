@@ -6,8 +6,9 @@ namespace AddressBookSystem
 {
     class AddressBook
     {
-        List<Contact> addresslist = new List<Contact>();
-        public void Addcontact(Contact contact)
+        public static List<Contact> addresslist = new List<Contact>();
+        public static Dictionary<string, List<Contact>> dict = new Dictionary<string, List<Contact>>();
+        public void AddContact(Contact contact)
         {
             addresslist.Add(contact);
             contact.FirstName = Console.ReadLine();
@@ -91,12 +92,38 @@ namespace AddressBookSystem
         }
         public void Display()
         {
-            foreach(var contact in addresslist)
+            foreach (var contact in addresslist)
             {
                 Console.WriteLine("Contact Details are..\n");
                 Console.Write("Firstname: " + contact.FirstName + "\n" + "Lastname: " + contact.LastName + "\n" + "Address: " + contact.Address + "\n" + "City: " + contact.City + "\n" + "State: " + contact.State + "\n" + "Zip: " + contact.Zip + "\n" + "Phone No.: " + contact.PhoneNumber + "\n" + "Email: " + contact.Email + "\n");
             }
         }
-
+        public void MultipleAddressBook()
+        {
+            Console.WriteLine("Enter no. of AddressBooks");
+            int noOfAddressBooks = Convert.ToInt32(Console.ReadLine());
+            while (noOfAddressBooks > 0)
+            {
+                Console.WriteLine("Enter Address BookName :");
+                string addressBookName = Console.ReadLine();
+                dict.Add(addressBookName, addresslist);
+                noOfAddressBooks--;
+            }
+        }
+        public void DisplayAddressBook()
+        {
+            Console.WriteLine("Enter name of dictionary to display that contact details");
+            string name = Console.ReadLine().ToLower();
+            foreach (var contacts in dict)
+            {
+                if (contacts.Key == name)
+                {
+                    foreach (var data in contacts.Value)
+                    {
+                        Console.WriteLine("The Details are:\n"+ "Firstname: " + data.FirstName + "\n" + "Lastname: " + data.LastName + "\n" + "Address: " + data.Address + "\n" + "City: " + data.City + "\n" + "State: " + data.State + "\n" + "Zip: " + data.Zip + "\n" + "Phone No.: " + data.PhoneNumber + "\n" + "Email: " + data.Email + "\n");
+                    }
+                }
+            }
+        }
     }
 }
