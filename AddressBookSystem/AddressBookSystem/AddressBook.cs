@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -217,6 +218,32 @@ namespace AddressBookSystem
                     dict[addressBookName].Sort((x, y) => x.Zip.CompareTo(y.Zip));
                     Console.WriteLine("Sorted by ZipCode");
                     break;
+            }
+        }
+        public void ReadFile()
+        {
+            Console.WriteLine("The Contact List Using Stream Reader");
+            string path = @"C:\Users\Venu Gopal Reddy\Bridgelabz\c#\.net\AddressBook\AddressBookSystem\AddressBookSystem\AddressBookSystem\AddressBookSystem\Utility\File.txt";
+
+            using (StreamReader se = File.OpenText(path))
+            {
+                string s = " ";
+                while ((s = se.ReadLine()) != null)
+                {
+                    Console.WriteLine(s);
+                }
+            }
+        }
+        public void WriteToFile()
+        {
+            Console.WriteLine("The Contact List Using Stream Writer");
+            String path = @"C:\Users\Venu Gopal Reddy\Bridgelabz\c#\.net\AddressBook\AddressBookSystem\AddressBookSystem\AddressBookSystem\AddressBookSystem\Utility\File.txt";
+            using (StreamWriter sr = File.AppendText(path))
+            {
+                foreach (var contact in addresslist)
+                {
+                    sr.WriteLine("\nfirstname: " + contact.FirstName + "\nlastname: " + contact.LastName + "\naddress: " + contact.Address + "\ncity: " + contact.City + "\nstate: " + contact.State + "\nzip: " + contact.Zip + "\nphoneno: " + contact.PhoneNumber + "\nemail: " + contact.Email);
+                }
             }
         }
     }

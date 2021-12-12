@@ -1,0 +1,9 @@
+
+firstname: venu
+lastname: Gopal
+address: 1-32
+city: Hyderabad
+state: Telangana
+zip: 500039
+phoneno: 987654321
+email: Venu8898@gmail.com
