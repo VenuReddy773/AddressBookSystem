@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AddressBookSystem
@@ -151,6 +152,35 @@ namespace AddressBookSystem
                     }
                     break;
             }
+        }
+        public void Count_person_city_state()
+        {
+            int count = 0;
+            Console.WriteLine("Enter your Choice for Searching a Person in");
+            Console.WriteLine("\n1.City \n2.State");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("Enter your City");
+                    String city = Console.ReadLine();
+                    foreach (Contact personal_Details in this.addresslist.FindAll(c => c.City == city))
+                    {
+                        count = this.addresslist.Count();
+                    }
+                    Console.WriteLine(count);
+                    break;
+                case 2:
+                    Console.WriteLine("Enter your State");
+                    String state = Console.ReadLine();
+                    foreach (Contact personal_Details in this.addresslist.FindAll(c => c.State == state))
+                    {
+                        count = this.addresslist.Count();
+                    }
+                    Console.WriteLine(count);
+                    break;
+            }
+
         }
     }
 }
