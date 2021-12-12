@@ -197,5 +197,27 @@ namespace AddressBookSystem
                 AddressBookSorting();
             }
         }
+        public void SortBy()
+        {
+            Console.WriteLine("Enter AddressBook Name To sort\n");
+            string addressBookName = Console.ReadLine();
+            Console.WriteLine("Sort By...\n 1.City\n 2.State\n 3.Zip\n");
+            int Option = Convert.ToInt32(Console.ReadLine());
+            switch (Option)
+            {
+                case 1:
+                    dict[addressBookName].Sort((x, y) => x.City.CompareTo(y.City));
+                    Console.WriteLine("Sorted by City");
+                    break;
+                case 2:
+                    dict[addressBookName].Sort((x, y) => x.State.CompareTo(y.State));
+                    Console.WriteLine("Sorted by State");
+                    break;
+                case 3:
+                    dict[addressBookName].Sort((x, y) => x.Zip.CompareTo(y.Zip));
+                    Console.WriteLine("Sorted by ZipCode");
+                    break;
+            }
+        }
     }
 }
