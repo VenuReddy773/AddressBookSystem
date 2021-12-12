@@ -6,7 +6,7 @@ namespace AddressBookSystem
 {
     class AddressBook
     {
-        public static List<Contact> addresslist = new List<Contact>();
+        List<Contact> addresslist = new List<Contact>();
         public static Dictionary<string, List<Contact>> dict = new Dictionary<string, List<Contact>>();
         public void AddContact(Contact contact)
         {
@@ -120,9 +120,36 @@ namespace AddressBookSystem
                 {
                     foreach (var data in contacts.Value)
                     {
-                        Console.WriteLine("The Details are:\n"+ "Firstname: " + data.FirstName + "\n" + "Lastname: " + data.LastName + "\n" + "Address: " + data.Address + "\n" + "City: " + data.City + "\n" + "State: " + data.State + "\n" + "Zip: " + data.Zip + "\n" + "Phone No.: " + data.PhoneNumber + "\n" + "Email: " + data.Email + "\n");
+                        Console.WriteLine("The Details are:\n" + "Firstname: " + data.FirstName + "\n" + "Lastname: " + data.LastName + "\n" + "Address: " + data.Address + "\n" + "City: " + data.City + "\n" + "State: " + data.State + "\n" + "Zip: " + data.Zip + "\n" + "Phone No.: " + data.PhoneNumber + "\n" + "Email: " + data.Email + "\n");
                     }
                 }
+            }
+        }
+        public void Search_person_city_state()
+        {
+            Console.WriteLine("Enter your Choice for Searching a Person in");
+            Console.WriteLine("\n1.city \n2.state");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("Enter City Name:");
+                    string city = Console.ReadLine();
+
+                    foreach (Contact data in this.addresslist.FindAll(e => e.City == city))
+                    {
+                        Console.WriteLine(data.FirstName + " " + data.LastName + " is from " + data.City);
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Enter State Name:");
+                    string state = Console.ReadLine();
+
+                    foreach (Contact data in this.addresslist.FindAll(e => e.State == state))
+                    {
+                        Console.WriteLine(data.FirstName + " " + data.LastName + " is from " + data.State);
+                    }
+                    break;
             }
         }
     }

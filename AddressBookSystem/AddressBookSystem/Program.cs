@@ -51,9 +51,14 @@ namespace AddressBookSystem
                     case 5:
                         Console.WriteLine("Enter The AddressBook Name\n");
                         addressBook.MultipleAddressBook();
+                        Console.WriteLine("Enter The Details in Order of Firstname,Lastname,Address,City,State,Zip,PhoneNumber,Email... To add contact..\n");
+                        addressBook.AddContact(contact);
                         addressBook.DisplayAddressBook();
                         break;
                     case 6:
+                        addressBook.Search_person_city_state();
+                        break;
+                    case 7:
                         flag = false;
                         break;
                     default:
