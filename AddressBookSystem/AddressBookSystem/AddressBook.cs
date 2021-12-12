@@ -182,5 +182,20 @@ namespace AddressBookSystem
             }
 
         }
+        public void AddressBookSorting()
+        {
+            Console.WriteLine("Enter the Addressbook name that you want to sort :");
+            string addressBookName = Console.ReadLine();
+            if (dict.ContainsKey(addressBookName))
+            {
+                dict[addressBookName].Sort((x, y) => x.FirstName.CompareTo(y.FirstName));
+                Console.WriteLine("Sorted");
+            }
+            else
+            {
+                Console.WriteLine("The Addressbook not exist.");
+                AddressBookSorting();
+            }
+        }
     }
 }
